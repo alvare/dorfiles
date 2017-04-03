@@ -1,0 +1,20 @@
+[user]
+    email = welcometothechango@gmail.com
+    name = clrnd
+[push]
+    default = simple
+[core]
+    editor = vim -f
+[alias]
+    co = commit
+    st = status -sb
+    fe = fetch
+    ch = checkout
+    lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset'
+    pussys = push --all
+    pussy = push
+    pushy = push
+    puggy = push
+    webui = !/home/alvarez/Src/Python/git-webui/release/libexec/git-core/git-webui
+    up = !git fetch && git rebase --autostash FETCH_HEAD
+    horas = log --author=Eze --pretty="format:%ad|%h|%s" --date='format:%m %d'
