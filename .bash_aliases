@@ -1,13 +1,17 @@
 alias python4="ghci"
 alias g="git"
+alias bc="bc -l"
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ls='ls -F --color=auto'
 alias ll='ls -alFh'
+alias lll='ls -alFh | lolcat -t'
 alias la='ls -A'
 alias l='ls'
+alias rg='rg -S -M200'
 alias whatismyip='wget http://ipinfo.io/ip -qO -'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias youtube-mp3='youtube-dl -x --audio-format mp3'
+alias youtube-mp3='youtube-dl -x --audio-format mp3 -o "%(title)s.%(ext)s"'
+alias vim='nvim'
 
 function unmv {
     mv $2 $1
@@ -47,3 +51,22 @@ function playmidi {
             return 1
     fi
 }
+
+function frameworkpython3 {
+    if [[ ! -z "$VIRTUAL_ENV" ]]; then
+        PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python3 "$@"
+    else
+        /usr/local/bin/python3 "$@"
+    fi
+}
+
+function frameworkpython {
+    if [[ ! -z "$VIRTUAL_ENV" ]]; then
+        PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python "$@"
+    else
+        /usr/local/bin/python "$@"
+    fi
+}
+
+# gitignore.io
+function gitignore() { curl -L -s https://www.gitignore.io/api/$@ ;}

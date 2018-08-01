@@ -137,10 +137,10 @@ source /usr/local/bin/virtualenvwrapper_lazy.sh
 eval `gdircolors ~/Src/dircolors.ansi-dark`
 
 # color prompt
-PS1="\[$BGreen\]\u\[$BBlue\]::\[$BRed\]\h \[$Blue\]{ \[$BBlue\]\w \[$Blue\]}\$(if [[ \$? == 0 ]]; then echo \"\[$BGreen\]\"; else echo \"\[$BRed\]\"; fi)-> \[$Color_Off\]"
+PS1="\[$BGreen\]\u\[$BBlue\]::\[$BRed\]\h \[$Blue\]{ \[$BBlue\]\w \[$Blue\]}\$(if [[ \$? == 0 ]]; then echo \"\[$BGreen\]->\"; else echo \"\[$BRed\]-✖\"; fi) \[$Color_Off\]"
 
 # stack
-export PATH=~/.local/bin:$PATH
+export PATH="~/.local/bin:$PATH"
 # gnu coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
@@ -150,9 +150,9 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="~/Src/Bash/with:$PATH"
 
 # cordova
-export ANDROID_HOME=~/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+export ANDROID_HOME="~/Library/Android/sdk"
+export PATH="$PATH:$ANDROID_HOME/tools"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
 # locales
 export LC_CTYPE=en_US.UTF-8
@@ -164,11 +164,28 @@ export HOMEBREW_GITHUB_API_TOKEN=b8d13da74c2fd9718ed7c9ed27701128a1911496
 # postgre
 export PGDATA='/usr/local/var/postgres'
 
-# iterm2
-source ~/.iterm2_shell_integration.`basename $SHELL`
-
 # docker stuff
 export LOCAL_USER_ID=501
 
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# added by travis gem
+#[ -f /Users/clrnd/.travis/travis.sh ] && source /Users/clrnd/.travis/travis.sh
+
+# update brew less frequently
+export HOMEBREW_AUTO_UPDATE_SECS=$((60*60*24))
+
+# elecciones stuff
+source ~/.elecciones_stuff.sh
+
+# llvm
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
+# iterm2 shell integration
+#test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# iterm2 title
+if [ $ITERM_SESSION_ID ]; then
+  export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ':"$PROMPT_COMMAND";
+fi
