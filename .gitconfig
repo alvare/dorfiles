@@ -15,6 +15,9 @@
     pussy = push
     pushy = push
     puggy = push
+    spuh = push
+    psuh = push
+    pshu = push
     webui = !/home/alvarez/Src/Python/git-webui/release/libexec/git-core/git-webui
     up = !git fetch && git rebase --autostash FETCH_HEAD
-    horas = log --author=Eze --pretty="format:%ad|%h|%s" --date='format:%m %d'
+    horas = log --all --author=clrnd --author=Alvarez --author=alvare --pretty="format:%ad|%h|%s" --date='format:%m %d'
