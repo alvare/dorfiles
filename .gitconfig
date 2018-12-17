@@ -4,7 +4,9 @@
 [push]
     default = simple
 [core]
-    editor = vim -f
+    editor = nvim -f
+[diff]
+  wsErrorHighlight = new
 [alias]
     co = commit
     st = status -sb
@@ -18,6 +20,13 @@
     spuh = push
     psuh = push
     pshu = push
-    webui = !/home/alvarez/Src/Python/git-webui/release/libexec/git-core/git-webui
+    pushf = push --force-with-lease
     up = !git fetch && git rebase --autostash FETCH_HEAD
-    horas = log --all --author=clrnd --author=Alvarez --author=alvare --pretty="format:%ad|%h|%s" --date='format:%m %d'
+    horas = log --all --author=clrnd --author=Alvarez --pretty="format:%ad|%h|%s" --date='format:%m %d'
+    mf = merge --ff-only
+    merfe = merge --ff-only
+    pulr = pull --rebase --autostash
+    difc = diff --cached
+    forget = update-index --assume-unchanged
+    unforget = update-index --no-assume-unchanged
+    forgotten = !git ls-files -v | grep "^[[:lower:]]"
